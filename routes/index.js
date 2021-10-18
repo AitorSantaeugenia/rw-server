@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const multer = require('./../config/cloudinary-config');
+var cors = require('cors');
+
+app.use(cors());
 
 router.get('/', (req, res, next) => {
 	res.json('All good in here');

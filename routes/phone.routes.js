@@ -2,6 +2,9 @@ const router = require('express').Router();
 
 //require phone model
 const Phone = require('../models/Phone.model');
+var cors = require('cors');
+
+app.use(cors());
 
 router.get('/telefonos', (req, res, next) => {
 	Phone.find()
