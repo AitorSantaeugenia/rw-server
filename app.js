@@ -1,9 +1,9 @@
 require('dotenv/config');
 require('./db');
 require('./config')(app);
-import cors from 'cors';
-const app = express();
 const express = require('express');
+const app = express();
+var cors = require('cors');
 
 app.use(allowCrossDomain);
 
