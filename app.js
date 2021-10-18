@@ -9,18 +9,18 @@ const { isAuthenticated } = require('./middleware/jwt.middleware'); // <== IMPOR
 const app = express();
 require('./config')(app);
 
+app.use(allowCrossDomain);
+app.use(cors());
+
 // 👇 MIDDLEWARE MISSING
 const allRoutes = require('./routes');
 app.use('/api', allRoutes);
-app.use(cors());
 
 const authRouter = require('./routes/auth.routes');
 app.use('/api/auth', authRouter);
-app.use(cors());
 
 const phoneRoutes = require('./routes/phone.routes');
 app.use('/api', phoneRoutes);
-app.use(cors());
 
 // app.use((req, res, next) => {
 //     // If no routes match, send them the React HTML.
