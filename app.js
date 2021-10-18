@@ -3,13 +3,9 @@ require('./db');
 require('./config')(app);
 const express = require('express');
 var cors = require('cors');
-const { isAuthenticated } = require('./middleware/jwt.middleware'); // <== IMPORT
 
-app.use(
-	cors({
-		origin: '*'
-	})
-);
+app.use(cors());
+app.options('*', cors());
 
 // 👇 MIDDLEWARE MISSING
 const allRoutes = require('./routes');
