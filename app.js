@@ -9,6 +9,7 @@ const { isAuthenticated } = require('./middleware/jwt.middleware'); // <== IMPOR
 const app = express();
 require('./config')(app);
 
+app.options('*', cors());
 app.use(allowCrossDomain);
 app.use(cors());
 
