@@ -1,9 +1,9 @@
 require('dotenv/config');
 require('./db');
-require('./config')(app);
 const express = require('express');
 const app = express();
 var cors = require('cors');
+require('./config')(app);
 
 app.use(allowCrossDomain);
 
