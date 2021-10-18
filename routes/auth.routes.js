@@ -3,13 +3,16 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.model');
 
+//cors
+var cors = require('cors');
+
 const { isAuthenticated } = require('../middleware/jwt.middleware.js');
 
 const router = express.Router();
 const saltRounds = 10;
 
 // POST /auth/signup  - Creates a new user in the database
-router.post('/signup', (req, res, next) => {
+router.post('/signup', cors(), (req, res, next) => {
 	const { email, password, name, image } = req.body;
 
 	// Check if email or password or name are provided as empty string
@@ -70,7 +73,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 // POST  /auth/login - Verifies email and password and returns a JWT
-router.post('/login', (req, res, next) => {
+router.post('/login', cors(), (req, res, next) => {
 	const { email, password } = req.body;
 
 	// Check if email or password are provided as empty string
@@ -111,7 +114,7 @@ router.post('/login', (req, res, next) => {
 });
 
 // GET  /auth/verify  -  Used to verify JWT stored on the client
-router.get('/verify', isAuthenticated, (req, res, next) => {
+router.get('/verify', cors(), isAuthenticated, (req, res, next) => {
 	// If JWT token is valid the payload gets decoded by the
 	// isAuthenticated middleware and made available on `req.payload`
 	//console.log(`req.payload`, req.payload);

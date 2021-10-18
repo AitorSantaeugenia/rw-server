@@ -2,8 +2,10 @@ const router = require('express').Router();
 
 //require phone model
 const Phone = require('../models/Phone.model');
+//cors
+var cors = require('cors');
 
-router.get('/telefonos', (req, res, next) => {
+router.get('/telefonos', cors(), (req, res, next) => {
 	Phone.find()
 		.then((phones) => {
 			res.json(phones);
@@ -15,7 +17,7 @@ router.get('/telefonos', (req, res, next) => {
 module.exports = router;
 
 //  GET /api/telefonos/:phoneid -  Retrieves a specific phoneid by id
-router.get('/telefonos/:id', (req, res, next) => {
+router.get('/telefonos/:id', cors(), (req, res, next) => {
 	const { id } = req.params;
 	//console.log(id);
 
