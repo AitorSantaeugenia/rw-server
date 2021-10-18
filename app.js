@@ -15,13 +15,13 @@ app.use(cors());
 
 // 👇 MIDDLEWARE MISSING
 const allRoutes = require('./routes');
-app.use('/api', allRoutes);
+app.use('/api', cors(), allRoutes);
 
 const authRouter = require('./routes/auth.routes');
-app.use('/api/auth', authRouter);
+app.use('/api/auth', cors(), authRouter);
 
 const phoneRoutes = require('./routes/phone.routes');
-app.use('/api', phoneRoutes);
+app.use('/api', cors(), phoneRoutes);
 
 // app.use((req, res, next) => {
 //     // If no routes match, send them the React HTML.
