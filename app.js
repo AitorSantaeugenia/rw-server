@@ -5,8 +5,6 @@ const app = express();
 var cors = require('cors');
 require('./config')(app);
 
-app.use(allowCrossDomain);
-
 // const { isAuthenticated } = require('./middleware/jwt.middleware'); // <== IMPORT
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
